@@ -46,7 +46,12 @@ export async function renderReferral(ctx) {
 
   const p = data.program || {};
   const s = data.stats || {};
-  const link = data.link || '';
+  /* Build the share link from wherever the site is actually being served
+     instead of trusting the backend's PUBLIC_URL, so the link can never point
+     at an old host after a move (the backend env var is now only a fallback). */
+  const link = data.code
+    ? `${location.origin}${location.pathname}#/register?ref=${data.code}`
+    : (data.link || '');
   const slotPct = p.budget ? Math.min(100, Math.round((p.spent / p.budget) * 100)) : 0;
   const closed = !p.active;
 
