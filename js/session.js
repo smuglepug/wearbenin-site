@@ -90,7 +90,17 @@ export async function register(payload) {
       password: payload.password,
       options: { data: { name: payload.name, role: payload.role, phone: payload.phone || '' } }
     });
-    if (error) throw { status: 409, message: error.message };
+    if (error) {
+      /* Surface what Supabase actually said. Mapping every failure to 409 made
+         rate-limits, weak passwords and bad addresses all read as "that email
+         already exists", which is both wrong and unfixable for the user. */
+      const msg = String(error.message || '').trim();
+      const status = /already registered|already exists|user already/i.test(msg) ? 409
+        : /rate limit|too many|security purposes/i.test(msg) ? 429
+          : /password|email|valid/i.test(msg) ? 422
+            : 400;
+      throw { status, message: msg || 'Could not create your account. Please try again.' };
+    }
     if (!data.session) {
       throw { status: 400, message: 'Check your email to confirm your account, then sign in.' };
     }
