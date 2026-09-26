@@ -1,0 +1,90 @@
+/* ==========================================================================
+   WearBenin v2 — Design tokens (spec §2, exact values)
+   ========================================================================== */
+:root{
+  /* Colour */
+  --ink:#111318;
+  --ink-2:#2A2F3A;
+  --muted:#5A6270;
+  --line:#E5E7EB;
+  --line-2:#F0F1F4;
+  --canvas:#F5F6F8;
+  --surface:#FFF;
+  --bg:#EBEEF2;
+  --brand:#E85D04;
+  --brand-2:#F48C06;
+  --brand-soft:#FFF4E8;
+  --green:#12A150;
+  --amber:#F59E0B;
+  --red:#DC2626;
+  --star:#F59E0B;
+  --whatsapp:#25D366;
+  --facebook:#1877F2;
+  --instagram:#E1306C;
+  --tiktok:#111318;
+  --x:#111318;
+  --telegram:#229ED9;
+
+  /* Radius */
+  --r-sm:6px;
+  --r-md:8px;
+  --r-lg:10px;
+  --r-pill:999px;
+
+  /* Shadow */
+  --sh-sm:0 1px 2px rgba(16,24,40,.06);
+  --sh-md:0 2px 8px rgba(16,24,40,.10);
+  --sh-lg:0 12px 32px rgba(17,19,24,.12);
+  --sh-xl:0 24px 60px rgba(17,19,24,.16);
+
+  /* Space scale */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+
+  /* Type */
+  --fs-display:44px; --lh-display:52px;
+  --fs-h1:34px; --lh-h1:42px;
+  --fs-h2:26px; --lh-h2:34px;
+  --fs-h3:20px; --lh-h3:28px;
+  --fs-h4:17px; --lh-h4:24px;
+  --fs-body:16px; --lh-body:26px;
+  --fs-small:14px; --lh-small:21px;
+  --fs-micro:12.5px; --lh-micro:18px;
+
+  --font-display:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+  --font-ui:'Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+
+  /* Layout */
+  --container:1320px;
+  --gutter:24px;
+  --header-h:78px;
+  --utility-h:38px;
+  --nav-h:64px;
+  --bottomnav-h:66px;
+
+  /* Motion */
+  --ease:cubic-bezier(.2,0,0,1);        /* Material 'standard' - the curve top sites use */
+  --ease-out:cubic-bezier(0,0,.2,1);    /* decelerate: entrances */
+  --ease-in:cubic-bezier(.4,0,1,1);     /* accelerate: exits */
+  --dur:160ms;                          /* snappy, not sluggish */
+  --dur-fast:120ms;
+  --dur-slow:240ms;
+
+  /* Z */
+  --z-header:60;
+  --z-drawer:90;
+  --z-sheet:100;
+  --z-modal:110;
+  --z-toast:120;
+}
+
+@media (max-width:900px){
+  :root{
+    --gutter:16px;
+    --fs-display:34px; --lh-display:40px;
+    --fs-h1:28px; --lh-h1:36px;
+    --fs-h2:22px; --lh-h2:30px;
+    --fs-h3:19px;
+    --utility-h:34px;
+    --header-h:66px;
+  }
+}

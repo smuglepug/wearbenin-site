@@ -1,0 +1,579 @@
+/* ==========================================================================
+   WearBenin v2 — Base / reset / shell chrome
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{
+  -webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-ui);
+  font-size:var(--fs-body);
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  min-height:100%;
+}
+img,svg,video,canvas{max-width:100%;display:block}
+img{height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,h5{margin:0;font-family:var(--font-display);font-weight:800;letter-spacing:-.015em;color:var(--ink)}
+p{margin:0}
+hr{border:0;border-top:1px solid var(--line);margin:0}
+:focus-visible{outline:3px solid rgba(232,93,4,.55);outline-offset:2px;border-radius:6px}
+::selection{background:var(--brand-soft);color:var(--brand)}
+[hidden]{display:none !important}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:999;background:var(--ink);color:#fff;
+  padding:12px 20px;border-radius:0 0 var(--r-sm) 0;font-weight:600
+}
+.skip-link:focus{left:0}
+
+/* ---------- Layout ---------- */
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.site-main{display:block;min-height:60vh;padding-bottom:var(--s8)}
+.site-main:focus{outline:none}
+.stack-24{display:flex;flex-direction:column;gap:var(--s5)}
+.stack-16{display:flex;flex-direction:column;gap:var(--s4)}
+.row-between{display:flex;align-items:center;justify-content:space-between;gap:var(--s4)}
+.text-muted{color:var(--muted)}
+.text-small{font-size:var(--fs-small);line-height:var(--lh-small)}
+.text-micro{font-size:var(--fs-micro);line-height:var(--lh-micro)}
+.clamp-1{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- Utility bar (home section 1) ---------- */
+.utility-bar{
+  background:var(--ink);color:rgba(255,255,255,.86);font-size:var(--fs-micro);
+  height:var(--utility-h);display:flex;align-items:center
+}
+.utility-bar .container{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:100%}
+.utility-left{display:flex;align-items:center;gap:var(--s4);min-width:0}
+.utility-left .ub-item{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.utility-left .ub-item svg{width:14px;height:14px}
+.utility-follow{display:inline-flex;align-items:center;gap:10px}
+.utility-follow .fb-label{color:rgba(255,255,255,.6);white-space:nowrap}
+.utility-right{display:flex;align-items:center;gap:var(--s4);flex-shrink:0}
+.utility-right a,.utility-right button{
+  color:rgba(255,255,255,.86);display:inline-flex;align-items:center;gap:6px;
+  font-size:var(--fs-micro);font-weight:600;transition:color var(--dur) var(--ease);padding:4px 2px;
+  white-space:nowrap;              /* the bar is 38px tall: wrapped labels clipped against its top edge */
+  max-height:30px;                 /* measured: an unsized icon + wrapped label pushed this to 60px */
+  overflow:hidden;
+}
+.utility-right a svg,.utility-right button svg,.utility-left svg,.utility-left .ub-item svg{
+  width:14px;height:14px;flex:0 0 auto;   /* icons inherit no size by default and blow the row out */
+}
+.utility-right a:hover,.utility-right button:hover{color:#fff}
+@media(max-width:1000px){
+  .utility-left .ub-hide-sm,
+  .utility-right .ub-hide-sm{display:none}
+}
+/* Phones: the utility strip keeps only what earns its space — location, then Sell/Help.
+   The five social icons live on in the footer and the drawer. */
+@media(max-width:900px){
+  .utility-follow{display:none}
+  .utility-bar .container,.utility .container{gap:var(--s3)}
+  .utility-left .ub-item{font-size:12px}
+}
+@media(max-width:760px){.utility-follow .fb-label{display:none}.utility-left{gap:var(--s3)}}
+
+/* ---------- Page-entrance transition (menu / profile / cart / every nav) ---------- */
+@media (prefers-reduced-motion: no-preference){
+  #main.page-in{animation:pageIn var(--dur-slow) var(--ease-out)}
+}
+@keyframes pageIn{from{opacity:0;transform:translate3d(0,5px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+
+/* ---------- Tap feedback on header/nav controls ---------- */
+.header-actions a,.icon-btn,.bn-item,.drawer-link{cursor:pointer}
+@media (prefers-reduced-motion: no-preference){
+  .header-actions a,.header-burger,.bn-item{cursor:pointer;
+    transition:transform 90ms var(--ease-out),color var(--dur) var(--ease),background var(--dur) var(--ease)}
+  .header-actions a:active,.header-burger:active,.bn-item:active{transform:scale(.97)}
+  .header-sell:active{transform:scale(.97)}
+}
+
+/* ---------- Nav loading bar (nprogress-style, fires on every route change) ---------- */
+.nav-progress{
+  position:fixed;top:0;left:0;height:3px;width:0;background:var(--brand);
+  z-index:calc(var(--z-header) + 5);pointer-events:none;opacity:0;
+  border-radius:0 3px 3px 0;
+}
+
+/* ---------- Boot splash (signature W mark) ---------- */
+.splash-root{
+  position:fixed;inset:0;z-index:100002;background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  opacity:1;transition:opacity .5s ease,visibility .5s ease
+}
+.splash-root.done{opacity:0;visibility:hidden;pointer-events:none}
+.splash-mark{
+  width:76px;height:76px;border-radius:18px;background:var(--brand);color:#fff;
+  display:grid;place-items:center;font-family:var(--font-display);font-size:40px;font-weight:800
+}
+.splash-name{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--ink)}
+.splash-tag{font-size:11.5px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.splash-bar{width:120px;height:3px;border-radius:3px;background:#EEF0F3;overflow:hidden;margin-top:4px}
+.splash-bar::after{content:"";display:block;height:100%;width:42%;background:var(--brand);border-radius:3px;animation:splashSlide 1.1s ease-in-out infinite}
+@keyframes splashSlide{0%{transform:translateX(-110%)}100%{transform:translateX(300%)}}
+@media (prefers-reduced-motion: reduce){.splash-bar::after{animation:none}}
+
+/* ---------- Header (home section 2) ---------- */
+.site-header{
+  position:sticky;top:0;z-index:var(--z-header);
+  background:#fff;                       /* solid — the frosted blur read as a glow */
+  border-bottom:1px solid var(--line);
+  transition:box-shadow var(--dur) var(--ease)
+}
+.site-header.is-stuck{box-shadow:var(--sh-md)}
+/* Jiji-style collapse (see below): scrolling down folds the logo + category rows
+   away seamlessly while the SEARCH always stays pinned. Max-heights are generous so
+   they clamp only in the collapsed state; the rows animate height/opacity together. */
+.site-header{overflow:hidden}
+.site-header .header-inner{
+  max-height:120px;overflow:hidden;
+  /* Height snaps in ONE layout; only opacity/transform animate (composited).
+     Animating max-height here reflowed the page every scroll frame - the
+     single biggest source of scroll jank. */
+  transition:opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease)
+}
+.site-header .header-catnav{max-height:70px;overflow:hidden;transition:opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease)}
+@media(max-width:900px){
+  .site-header.slim .header-inner{min-height:0;max-height:0;opacity:0;transform:translate3d(0,-6px,0)}
+  .site-header.slim .header-catnav{max-height:0;opacity:0;transform:translate3d(0,-6px,0)}
+  .site-header.slim{border-bottom-color:#fff}
+}
+@media(min-width:901px){
+  /* desktop: never fold the row that holds the search + actions */
+  .site-header.slim .header-catnav{max-height:0;opacity:0}
+  .site-header.slim .header-inner{max-height:120px;opacity:1}
+}
+.header-inner{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;
+  gap:var(--s5);min-height:var(--header-h)
+}
+/* The burger is a mobile-only control. This must out-specify .icon-btn's display:grid, otherwise
+   it stays a 4th grid item on desktop, wraps the actions row onto a second line, and that row
+   paints over the category nav below (measured: 319x45px overlap). */
+.header-inner .header-burger{ display:none; }
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0;min-height:44px}
+.brand-mark{
+  width:42px;height:42px;border-radius:12px;flex-shrink:0;
+  background:var(--brand);
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:19px;
+  font-family:var(--font-display);
+}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:var(--font-display);font-weight:800;font-size:21px;letter-spacing:-.03em}
+.brand-sub{font-size:10.5px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:3px;font-weight:600}
+@media(max-width:1200px){.brand-sub{display:none}}
+@media(max-width:480px){.brand-name{font-size:18px}.brand-mark{width:36px;height:36px;border-radius:11px;font-size:16px}}
+
+/* ---------- Search — modern soft-grey pill ----------
+   Soft grey fill (no hard border), leading line magnifier, quiet focus state.
+   On phones the submit button is dropped entirely: the magnifier + Enter is the modern
+   marketplace pattern (Jiji app / Temu / Instagram), and it kills the dated look of a
+   big orange button hogging the pill. */
+.header-search{min-width:0;max-width:720px;margin:0 auto;width:100%}
+.search-shell{
+  display:flex;align-items:center;height:46px;background:#F1F3F6;
+  border:1px solid transparent;border-radius:var(--r-pill);
+  overflow:hidden;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)
+}
+.search-shell:hover{background:#EDEFF3}
+.search-shell:focus-within{background:#fff;border-color:#C9CDD4;box-shadow:0 0 0 3px rgba(17,19,24,.06)}
+.search-ico{display:inline-flex;align-items:center;padding:0 2px 0 16px;color:#6B7280;flex-shrink:0}
+.search-ico svg{width:18px;height:18px}
+.search-loc{
+  display:flex;align-items:center;gap:7px;padding:0 12px 0 4px;flex-shrink:0;max-width:190px;
+  border-right:1px solid #E1E4E9;color:#6B7280;align-self:stretch;margin-right:10px
+}
+.search-loc svg{width:15px;height:15px;flex-shrink:0;color:#9AA1AC}
+.search-loc select{
+  border:0;background:transparent;font-size:14px;font-weight:600;color:#374151;
+  max-width:150px;cursor:pointer;appearance:none;padding-right:2px
+}
+.search-loc select:focus{outline:none}
+.search-qwrap{display:flex;align-items:center;flex:1;min-width:0;padding:0 14px 0 10px}
+.search-qwrap input{
+  border:0;background:transparent;flex:1;min-width:0;font-size:15px;padding:6px 0;height:100%;color:var(--ink)
+}
+.search-qwrap input:focus{outline:none}
+.search-qwrap input::placeholder{color:#8A919C}
+.search-btn{
+  width:36px;height:36px;flex:0 0 auto;margin:4px;padding:0;border-radius:50%;
+  background:#E4E7EB;color:#6B7280;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background var(--dur) var(--ease)
+}
+.search-btn:hover{background:#D5DADF}
+.search-btn svg,.search-ico svg,.search-loc svg{color:#6B7280}
+.search-btn span{display:none}
+.search-btn svg{width:16px;height:16px}
+@media(max-width:1080px){.search-loc{display:none}}
+/* Exactly one magnifier at every width: inline icon on phones (no button),
+   button icon on desktop (no inline icon). */
+@media(min-width:901px){.search-ico{display:none}}
+@media(max-width:900px){
+  .search-btn{display:none}
+  .search-ico{padding-left:14px}
+  .search-qwrap{padding-left:8px}
+}
+
+.header-actions{display:flex;align-items:center;gap:var(--s2);flex-shrink:0}
+.hact{
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  min-width:56px;height:52px;padding:0 8px;border-radius:var(--r-md);color:var(--ink-2);
+  font-size:11px;font-weight:600;transition:background var(--dur) var(--ease),color var(--dur) var(--ease);
+  position:relative
+}
+.hact svg{width:21px;height:21px}
+.hact:hover{background:var(--line-2);color:var(--brand)}
+.hact .badge{
+  position:absolute;top:5px;right:8px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;
+  background:var(--brand);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;line-height:1
+}
+@media(max-width:1080px){.hact-label{display:none}.hact{min-width:46px;height:46px}}
+@media(max-width:420px){.hact{min-width:44px}}
+/* Post Ad — a quiet outlined pill (Airbnb "become a host" spirit), so the header
+   keeps a single orange accent (the search button) instead of two loud blocks. */
+.header-sell{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 18px;border-radius:8px;
+  background:#E85D04;color:#fff;border:0;
+  font-weight:800;font-size:13px;letter-spacing:.03em;line-height:1;white-space:nowrap;
+  transition:background var(--dur) var(--ease);
+  flex-shrink:0;align-self:center
+}
+.header-sell svg{width:17px;height:17px;flex-shrink:0}
+.header-sell:hover{background:#D9550A}
+@media(max-width:1240px){.header-sell{padding:0 16px}}
+@media(max-width:560px){.header-sell{display:none}}
+.header-burger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px}
+.hb{display:block;width:21px;height:2px;border-radius:2px;background:var(--ink);
+  transition:transform .32s var(--ease),opacity .2s var(--ease)}
+.header-burger.is-open .hb:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.header-burger.is-open .hb:nth-child(2){opacity:0}
+.header-burger.is-open .hb:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:1080px){
+  .header-inner .header-burger{display:inline-flex}
+  .hact-desktop{display:none}
+}
+@media(max-width:900px){
+  .header-inner{grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s3)}
+  .header-search{display:none}
+  .header-inner.mobile-search-row{grid-template-columns:minmax(0,1fr) auto auto}
+}
+
+/* Mobile search row under header */
+.header-searchmobile{display:none;padding:0 0 var(--s3)}
+.header-searchmobile .search-shell{height:52px}
+@media(max-width:900px){.header-searchmobile{display:block}}
+
+/* Category quick nav under header (desktop) */
+.header-catnav{border-top:1px solid var(--line-2);background:#fff}
+.header-catnav .container{display:flex;align-items:center;gap:26px;height:46px;overflow-x:auto;scrollbar-width:none}
+.header-catnav .container::-webkit-scrollbar{display:none}
+/* Temu-style tab row: quiet grey labels, the current one marked by weight + a solid underline. */
+.header-catnav a{
+  font-size:var(--fs-small);font-weight:500;color:var(--muted);white-space:nowrap;
+  padding:13px 0 12px;border-bottom:2px solid transparent;
+  transition:color var(--dur),border-color var(--dur)
+}
+.header-catnav a:hover{color:var(--ink)}
+.header-catnav a.active{color:var(--ink);font-weight:700;border-bottom-color:var(--ink)}
+/* Mobile: keep the same quiet tab row (Temu does) — scrollable, tighter gaps, no height jump. */
+@media(max-width:900px){
+  .header-catnav{display:block;border-top:1px solid var(--line-2)}
+  .header-catnav .container{gap:20px;height:42px;padding:0 var(--gutter);
+    /* soft fade at the right edge hints that the tabs keep scrolling */
+    mask-image:linear-gradient(90deg,#000 88%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent 100%)}
+  .header-catnav a{font-size:13.5px;padding:11px 0 10px}
+}
+
+/* ---------- Drawer ---------- */
+.drawer{
+  position:fixed;inset:0;z-index:var(--z-drawer);display:block;visibility:hidden;pointer-events:none;
+  transition:visibility 0s linear 340ms
+}
+.drawer.open{visibility:visible;pointer-events:auto;transition:visibility 0s}
+.drawer-scrim{position:absolute;inset:0;background:rgba(17,19,24,.5);opacity:0;transition:opacity var(--dur) var(--ease)}
+.drawer.open .drawer-scrim{opacity:1}
+.drawer-panel{
+  position:absolute;top:0;left:0;bottom:0;width:min(88vw,360px);background:#fff;
+  transform:translateX(-100%);transition:transform 300ms var(--ease);display:flex;flex-direction:column;
+  box-shadow:var(--sh-xl)
+}
+.drawer.open .drawer-panel{transform:translateX(0);animation:drawerSlideIn 300ms var(--ease)}
+@keyframes drawerSlideIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.drawer-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.drawer-body{flex:1;overflow-y:auto;padding:8px 0 24px}
+.drawer-sec{padding:16px 20px;border-bottom:1px solid var(--line-2)}
+.drawer-sec h4{font-size:var(--fs-micro);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;font-weight:700}
+.drawer-link{
+  display:flex;align-items:center;gap:12px;min-height:44px;padding:8px 4px;font-size:15px;font-weight:500;
+  border-radius:var(--r-sm);color:var(--ink-2)
+}
+.drawer-link:hover{background:var(--brand-soft);color:var(--brand)}
+.drawer-link svg{width:18px;height:18px;color:var(--muted)}
+.drawer-link:hover svg{color:var(--brand)}
+.drawer-link .count{margin-left:auto;font-size:var(--fs-micro);color:var(--muted);font-weight:600}
+
+/* ---------- Footer (home section 15) ---------- */
+.site-footer{background:var(--ink);color:rgba(255,255,255,.72);margin-top:var(--s9);font-size:var(--fs-small)}
+.footer-top{padding:var(--s8) 0 var(--s7)}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:var(--s7)}
+@media(max-width:1080px){.footer-grid{grid-template-columns:1fr 1fr 1fr;gap:var(--s6)}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr 1fr;gap:var(--s6)}}
+/* Footer columns must be able to shrink: grid items default to min-width:auto, so a long
+   category name or an unbreakable count chip could push the page wider than 360px
+   (measured: scrollWidth 375 at a 360px viewport, masked by body overflow-x:hidden). */
+.footer-grid > div{min-width:0}
+.footer-col{min-width:0}
+.footer-cat{min-width:0}
+.footer-cat .footer-cat-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.footer-col a,.footer-legal a{overflow-wrap:anywhere}
+.footer-brand .brand-name{color:#fff}
+.footer-brand .brand-sub{color:rgba(255,255,255,.5)}
+.footer-about{color:rgba(255,255,255,.62);margin-top:var(--s4);max-width:340px;font-size:var(--fs-small);line-height:1.7}
+.footer-social{display:flex;gap:10px;margin-top:var(--s5);flex-wrap:wrap}
+.footer-col h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--s4);font-family:var(--font-ui);font-weight:700}
+.footer-col ul{display:flex;flex-direction:column;gap:4px}
+/* Touch/pointer targets: 44px on phones (spec §2), a comfortable 36px on desktop pointers. */
+.footer-col a{
+  color:rgba(255,255,255,.72);transition:color var(--dur) var(--ease);
+  display:inline-flex;align-items:center;min-height:36px;padding:2px 0;
+}
+.footer-col a:hover{color:#fff}
+/* Category list: real top-level categories with their live ad counts. */
+.footer-cat{display:flex;align-items:center;gap:10px;min-height:32px}
+.footer-cat .footer-count{
+  margin-left:auto;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.62);
+  background:rgba(255,255,255,.10);border-radius:var(--r-pill);padding:1px 8px
+}
+.footer-cat:hover .footer-count{background:rgba(232,93,4,.28);color:#fff}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);padding:var(--s5) 0;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;
+  font-size:var(--fs-micro);color:rgba(255,255,255,.55)
+}
+.footer-legal{display:flex;flex-wrap:wrap;gap:6px 16px;max-width:760px}
+.footer-legal a:hover{color:#fff}
+.footer-pay{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pay-chip{
+  border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:5px 12px;
+  font-size:11.5px;font-weight:600;color:rgba(255,255,255,.75)
+}
+@media(max-width:640px){.footer-bottom{flex-direction:column;align-items:flex-start;gap:16px}}
+
+/* ---------- Bottom nav (mobile) ---------- */
+.bottom-nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:var(--z-header);display:none;
+  background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -2px 10px rgba(17,19,24,.05);
+  padding-bottom:env(safe-area-inset-bottom);
+  transition:transform 260ms var(--ease)
+}
+.bottom-nav.scroll-hide{transform:translateY(105%)}
+.bottom-nav-inner{display:grid;grid-template-columns:repeat(5,1fr);height:var(--bottomnav-h)}
+.bn-item{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  font-size:11px;font-weight:600;color:var(--muted);position:relative;min-height:48px;letter-spacing:.01em
+}
+.bn-item svg{width:23px;height:23px;stroke-width:1.9}
+.bn-item.active{color:var(--ink)}
+.bn-item.active svg{stroke-width:2.2}
+.bn-item .badge{
+  position:absolute;top:6px;right:calc(50% - 22px);min-width:17px;height:17px;padding:0 4px;border-radius:9px;
+  background:var(--brand);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;line-height:1
+}
+/* Flat, honest "Sell" affordance — no gradient orb, no coloured glow. */
+.bn-sell .bn-orb{
+  width:40px;height:40px;border-radius:12px;background:var(--ink);
+  display:grid;place-items:center;color:#fff
+}
+.bn-sell .bn-orb svg{width:22px;height:22px;stroke-width:2.4}
+@media(max-width:900px){
+  .bottom-nav{display:block}
+  .site-main{padding-bottom:calc(var(--bottomnav-h) + 32px)}
+  .site-footer{margin-bottom:0}
+}
+
+/* ---------- Cart drawer (slide-in basket) ---------- */
+.cart-drawer{position:fixed;inset:0;z-index:var(--z-drawer);display:block;visibility:hidden;pointer-events:none;transition:visibility 0s linear 340ms}
+.cart-drawer.open{visibility:visible;pointer-events:auto;transition:visibility 0s}
+.cd-scrim{position:absolute;inset:0;background:rgba(17,19,24,.5);opacity:0;transition:opacity .3s var(--ease)}
+.cart-drawer.open .cd-scrim{opacity:1}
+.cd-panel{position:absolute;top:0;right:0;bottom:0;width:min(94vw,400px);background:#fff;
+  transform:translateX(100%);transition:transform .32s var(--ease);display:flex;flex-direction:column;
+  box-shadow:-14px 0 34px rgba(17,19,24,.18)}
+.cart-drawer.open .cd-panel{transform:translateX(0);animation:cdSlideIn .32s var(--ease)}
+@keyframes cdSlideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.cd-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+.cd-head h3{font-size:17px;font-weight:800;margin:0;display:flex;align-items:center;gap:8px}
+.cd-count{font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);border-radius:999px;padding:2px 9px}
+.cd-close{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--line-2);font-size:20px;line-height:1;color:var(--ink-2)}
+.cd-close:hover{background:var(--line)}
+.cd-body{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.cd-empty{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:40px 16px;color:var(--muted)}
+.cd-empty svg{width:34px;height:34px;color:var(--line)}
+.cd-empty b{color:var(--ink);font-size:16px}
+.cd-empty span{font-size:13px}
+.cd-empty .btn{margin-top:8px}
+.cd-item{display:grid;grid-template-columns:64px 1fr;gap:12px;background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:10px;align-items:center}
+.cd-thumb{width:64px;height:64px;border-radius:8px;overflow:hidden;background:var(--line-2);display:block}
+.cd-thumb img{width:100%;height:100%;object-fit:cover}
+.cd-noimg{width:100%;height:100%;display:grid;place-items:center;color:var(--muted)}
+.cd-info{min-width:0}
+.cd-title{font-size:13.5px;font-weight:600;color:var(--ink);display:block;line-height:1.35}
+.cd-title:hover{color:var(--brand)}
+.cd-price{font-size:14.5px;font-weight:800;color:var(--green);margin-top:2px}
+.cd-un{font-size:11px;color:var(--muted);font-weight:500}
+.cd-tools{display:flex;align-items:center;gap:10px;margin-top:8px}
+.cd-buy{margin-left:auto;font-size:12px;font-weight:700;color:var(--whatsapp)}
+.cd-buy:hover{text-decoration:underline}
+.cd-remove{font-size:12px;color:#9A3412;font-weight:600}
+.cd-remove:hover{color:#C2410C}
+.cd-foot{border-top:1px solid var(--line);padding:14px 16px calc(14px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px}
+.cd-sum{display:flex;align-items:center;justify-content:space-between;font-size:15px}
+.cd-sum b{font-size:18px;color:var(--brand)}
+.cd-note{font-size:12px;color:var(--muted);margin:0}
+.cd-clear{font-size:12.5px;color:#9A3412;font-weight:600;text-align:center;padding:6px}
+.cd-clear:hover{color:#C2410C}
+
+/* ---------- Sheet (filter bottom sheet) ---------- */
+.sheet-root{position:fixed;inset:0;z-index:var(--z-sheet);display:none}
+.sheet-root.open{display:block}
+.sheet-scrim{position:absolute;inset:0;background:rgba(17,19,24,.5);opacity:0;transition:opacity var(--dur) var(--ease)}
+.sheet-root.open .sheet-scrim{opacity:1}
+.sheet-panel{
+  position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:var(--r-lg) var(--r-lg) 0 0;
+  max-height:88vh;display:flex;flex-direction:column;transform:translateY(101%);
+  transition:transform 300ms var(--ease);padding-bottom:env(safe-area-inset-bottom)
+}
+.sheet-root.open .sheet-panel{transform:translateY(0)}
+.sheet-head{padding:18px 20px 10px;display:flex;align-items:center;justify-content:space-between}
+.sheet-head h3{font-size:var(--fs-h3)}
+.sheet-grab{width:44px;height:4px;border-radius:2px;background:var(--line);margin:10px auto 0}
+.sheet-body{flex:1;overflow-y:auto;padding:var(--s4) var(--s5) var(--s5)}
+.sheet-foot{padding:var(--s4) var(--s5);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+
+/* ---------- Modal ---------- */
+.modal-root{position:fixed;inset:0;z-index:var(--z-modal);display:none}
+.modal-root.open{display:block}
+.modal-scrim{position:absolute;inset:0;background:rgba(17,19,24,.55);opacity:0;transition:opacity var(--dur) var(--ease)}
+.modal-root.open .modal-scrim{opacity:1}
+.modal-panel{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;
+  background:#fff;border-radius:var(--r-lg);width:min(94vw,560px);max-height:88vh;overflow:auto;
+  box-shadow:var(--sh-xl);transition:transform 260ms var(--ease),opacity 260ms var(--ease)
+}
+.modal-root.open .modal-panel{transform:translate(-50%,-50%) scale(1);opacity:1}
+.modal-head{padding:var(--s5) var(--s5) var(--s3);display:flex;align-items:flex-start;justify-content:space-between;gap:var(--s4)}
+.modal-head h3{font-size:var(--fs-h3)}
+.modal-body{padding:0 var(--s5) var(--s5)}
+.modal-foot{padding:var(--s4) var(--s5) var(--s5);display:flex;gap:var(--s3);justify-content:flex-end;flex-wrap:wrap}
+
+/* ---------- Toast ---------- */
+.toast-stack{
+  position:fixed;right:20px;bottom:20px;z-index:var(--z-toast);display:flex;flex-direction:column;gap:10px;
+  max-width:min(92vw,400px);pointer-events:none
+}
+@media(max-width:900px){.toast-stack{bottom:calc(var(--bottomnav-h) + 14px);left:16px;right:16px;max-width:none}}
+.toast{
+  pointer-events:auto;background:var(--ink);color:#fff;border-radius:var(--r-md);padding:14px 16px;
+  box-shadow:var(--sh-lg);display:flex;align-items:flex-start;gap:12px;font-size:var(--fs-small);
+  animation:toastIn 260ms var(--ease)
+}
+.toast.out{animation:toastOut 220ms var(--ease) forwards}
+.toast svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+.toast.ok{background:#0B3B24}
+.toast.err{background:#4A1113}
+.toast.ok svg{color:#4ADE80}
+.toast.err svg{color:#FCA5A5}
+.toast a{color:#fff;text-decoration:underline}
+@keyframes toastIn{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+@keyframes toastOut{to{transform:translateY(10px);opacity:0}}
+
+/* ---------- Lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:var(--z-modal);background:rgba(9,10,12,.94);display:none;place-items:center;padding:24px}
+.lightbox.open{display:grid}
+.lightbox img{max-width:100%;max-height:88vh;border-radius:var(--r-md);object-fit:contain}
+.lightbox-close{position:absolute;top:20px;right:20px;color:#fff;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.12)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center}
+.lightbox-nav.prev{left:20px}.lightbox-nav.next{right:20px}
+
+/* ---------- Offline banner ---------- */
+.offline-banner{
+  background:#FFF7ED;border-bottom:1px solid #FED7AA;color:#7C2D12;font-size:var(--fs-small);
+  padding:11px 0;position:relative;z-index:65
+}
+.offline-banner[hidden]{display:none}
+.offline-banner .container{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.offline-banner strong{color:#9A3412}
+.offline-dot{width:9px;height:9px;border-radius:50%;background:var(--amber);flex-shrink:0;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.offline-retry{
+  margin-left:auto;background:#7C2D12;color:#fff;border-radius:var(--r-pill);padding:7px 16px;
+  font-size:12.5px;font-weight:700
+}
+
+/* ---------- Boot ---------- */
+.boot-splash{padding:120px 0;text-align:center;color:var(--muted)}
+.boot-logo{font-family:var(--font-display);font-weight:800;font-size:30px;color:var(--ink);letter-spacing:-.03em;margin-bottom:10px}
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+/* ---------- Touch targets on phones (spec §2: >= 44px) ---------- */
+@media(max-width:900px){
+  .footer-col a,
+  .crumbs a,
+  .footer-links a,
+  .legal-links a{ min-height:44px; }
+  .footer-col ul{ gap:0; }
+  .crumbs{ padding:12px 0; }
+  .footer-bottom a{ display:inline-flex; align-items:center; min-height:44px; }
+}
+
+/* ---------------------------------------------------------------------------
+   Touch-target + contrast hardening (2026 audit: 65 targets <44px, 24 contrast
+   failures). Enforces a 44px minimum on every interactive control and lifts
+   muted text on grey surfaces to --ink-2.
+   --------------------------------------------------------------------------- */
+.icon-btn,.hact,.cd-close,.drawer-close,.filter-clear,.chip{min-width:44px;min-height:44px}
+.utility-bar a,.utility-bar button{min-height:44px;display:inline-flex;align-items:center}
+.card-fav,.card-cart{width:44px;height:44px}
+.card-cart{right:62px}
+.search-shell input,#wb-band-search input,input[type="search"]{min-height:44px}
+.card-title,.card-title a{min-height:44px;display:block}
+.hero-band-title,.hero-band-sub,.section-sub,.card-loc,.card-title{color:var(--ink-2)}
+::placeholder{color:#5A6270;opacity:1}
+.hero-band-links a,.promo-cta,footer a,.footer a,.howit-steps a{min-height:44px;display:inline-flex;align-items:center}
+/* Vendor name + rating links sit right next to each other, so the tap target is
+   the ROW, not the text: 48px tall with the children stacked inside. */
+.vendor-row-tap,.vendor-card-title,.vendor-card .vendor-sub,.vendor-rating,
+.rail-vendor .vendor-row-tap,.vendor-row{min-height:48px;display:inline-flex;flex-direction:column;justify-content:center}
+
+/* ---------------------------------------------------------------------------
+   Composite-friendly hints. The header collapse, drawer and bottom nav are the
+   only things that move during a scroll; promoting just those keeps every other
+   paint on the CPU cheap, so scrolling stays smooth on low-end phones.
+   --------------------------------------------------------------------------- */
+.site-header,.bottom-nav,.drawer,.cart-drawer,.cd-panel{
+  transform:translateZ(0);backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.drawer,.cart-drawer .cd-panel{will-change:transform}
+
+html{-webkit-overflow-scrolling:touch}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}

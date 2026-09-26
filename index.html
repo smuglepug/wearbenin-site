@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E85D04">
+<title>WearBenin — Benin City's fashion marketplace</title>
+<meta name="description" content="Shop Benin City's fashion at market prices. Ankara, agbada, iro &amp; buba, sneakers, bags and more from verified vendors across Edo State. Chat on WhatsApp before you pay.">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:site_name" content="WearBenin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WearBenin — Benin City's fashion marketplace">
+<meta property="og:description" content="Ankara, agbada, sneakers, bags and more from verified Benin City vendors. Chat on WhatsApp before you pay.">
+<meta property="og:image" content="/assets/og-default.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wearbenin-clothing-marketplace.netlify.app/">
+<meta property="og:url" content="https://wearbenin-clothing-marketplace.netlify.app/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"WearBenin","url":"https://wearbenin-clothing-marketplace.netlify.app/","description":"Benin City's clothing marketplace - buy and sell ankara, agbada, sneakers and bags from verified vendors across Edo State.","potentialAction":{"@type":"SearchAction","target":"https://wearbenin-clothing-marketplace.netlify.app/#/search?q={search_term_string}","query-input":"required name=search_term_string"},"areaServed":"Benin City, Edo State, Nigeria"}</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://wearbenin-backend.onrender.com" crossorigin>
+<link rel="dns-prefetch" href="https://wearbenin-backend.onrender.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<noscript><div id="wb-noscript-seo" style="max-width:640px;margin:24px auto;padding:20px;font-family:sans-serif;line-height:1.6">
+<h1>WearBenin &mdash; buy and sell clothes in Benin City, Edo State</h1>
+<p>WearBenin is Benin City's clothing marketplace. <strong>Buyers</strong> browse ankara, agbada, iro &amp; buba, sneakers, bags and accessories with prices and locations across Edo State, then chat with the vendor on WhatsApp before paying. <strong>Vendors</strong> post photos in minutes and reach a wider audience.</p>
+<p><a href="#/categories">Browse categories</a> &middot; <a href="#/search">Search listings</a> &middot; <a href="#/sell">Sell an item</a> &middot; <a href="#/vendors">Verified vendors</a></p>
+<p>Legal: <a href="legal/terms.html">Terms</a> &middot; <a href="legal/privacy.html">Privacy (NDPA)</a> &middot; <a href="legal/vendor-agreement.html">Vendor agreement</a> &middot; <a href="legal/prohibited-items.html">Prohibited items</a></p>
+</div></noscript>
+
+<div id="wb-offline-banner" class="offline-banner" hidden role="status">
+  <span class="offline-dot" aria-hidden="true"></span>
+  <strong>Offline demo data.</strong>
+  <span>We could not reach the WearBenin API, so you are seeing a small sample. Live listings, vendors and messaging are unavailable until the connection returns.</span>
+  <button type="button" class="offline-retry" id="wb-offline-retry">Retry</button>
+</div>
+
+<header id="wb-utility" class="utility-bar" aria-label="Site information"></header>
+<header id="wb-header" class="site-header" aria-label="Main"></header>
+<div id="wb-drawer" class="drawer" aria-hidden="true"></div>
+<div id="wb-cartdrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cd-scrim" data-close-cart></div>
+  <div class="cd-panel" role="dialog" aria-label="Cart">
+    <div class="cd-head"><h3>Your cart <span class="cd-count">0</span></h3><button class="cd-close" data-close-cart aria-label="Close cart">×</button></div>
+    <div class="cd-body"></div>
+    <div class="cd-foot"></div>
+  </div>
+</div>
+
+<div id="splash" class="splash-root" role="status" aria-label="Loading WearBenin">
+  <span class="splash-mark" aria-hidden="true">W</span>
+  <span class="splash-name">WearBenin</span>
+  <span class="splash-tag">Benin City Fashion</span>
+  <span class="splash-bar" aria-hidden="true"></span>
+</div>
+
+<main id="main" class="site-main" tabindex="-1"></main>
+
+<footer id="wb-footer" class="site-footer"></footer>
+<nav id="wb-bottomnav" class="bottom-nav" aria-label="Mobile navigation"></nav>
+<div id="wb-sheet" class="sheet-root" aria-hidden="true"></div>
+<div id="wb-modal" class="modal-root" aria-hidden="true"></div>
+<div id="wb-toasts" class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+<div id="wb-lightbox" class="lightbox" aria-hidden="true"></div>
+
+<noscript>
+  <div style="max-width:680px;margin:80px auto;padding:32px;background:#fff;border-radius:20px;font-family:system-ui">
+    <h1 style="font-size:26px">JavaScript is required</h1>
+    <p style="color:#6B7280">WearBenin is a single-page application. Please enable JavaScript to browse listings from Benin City vendors.</p>
+  </div>
+</noscript>
+
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

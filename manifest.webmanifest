@@ -1,0 +1,26 @@
+{
+  "name": "WearBenin — Benin City Fashion Marketplace",
+  "short_name": "WearBenin",
+  "description": "Buy and sell fashion in Benin City, Edo State. Ankara, agbada, sneakers, bags and more — chat with verified vendors on WhatsApp.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F5F6F8",
+  "theme_color": "#E85D04",
+  "lang": "en-NG",
+  "categories": ["shopping", "lifestyle", "business"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Post an ad", "url": "/#/sell" },
+    { "name": "My saved items", "url": "/#/saved" },
+    { "name": "Inbox", "url": "/#/inbox" }
+  ]
+}

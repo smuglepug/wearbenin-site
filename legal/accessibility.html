@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility Statement &middot; WearBenin</title>
+<meta name="description" content="WearBenin accessibility statement: WCAG 2.1 AA as our target, what we have built, the gaps we know about, and how to ask for help.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="WearBenin">
+<meta property="og:title" content="Accessibility Statement &middot; WearBenin">
+<meta property="og:description" content="WearBenin accessibility statement: WCAG 2.1 AA as our target, what we have built, the gaps we know about, and how to ask for help.">
+<meta name="theme-color" content="#E85D04">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#111318;--ink-2:#2A2F3A;--muted:#6B7280;--line:#E5E7EB;--line-2:#F0F1F4;
+  --canvas:#F5F6F8;--surface:#FFF;--brand:#E85D04;--brand-2:#F48C06;--brand-soft:#FFF4E8;
+  --green:#12A150;--amber:#F59E0B;--red:#DC2626;--star:#F59E0B;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+  --sh-sm:0 1px 2px rgba(17,19,24,.06);--sh-md:0 4px 16px rgba(17,19,24,.08);--sh-lg:0 12px 32px rgba(17,19,24,.12);
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.brand-name{font-family:"Plus Jakarta Sans",Inter,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.01em}
+a{color:#B04502}
+a:hover{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--ink);padding:10px 14px;z-index:99;border-radius:0 0 var(--r-sm) 0}
+.skip:focus{left:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:16px;justify-content:space-between;min-height:68px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px;font-family:"Plus Jakarta Sans",sans-serif}
+.brand-name{font-weight:800;font-size:18px}
+.brand-tag{font-size:12.5px;color:var(--muted);border-left:1px solid var(--line);padding-left:10px;margin-left:2px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--r-pill);font-size:14px;
+  font-weight:600;text-decoration:none;border:1px solid transparent;min-height:44px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:#C94F03;color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:#d7dae0;color:var(--ink)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(180deg,#fff 0%,#fff 60%,var(--canvas) 100%);border-bottom:1px solid var(--line-2);padding:40px 0 32px}
+.crumbs{font-size:12.5px;color:var(--muted);margin:0 0 14px;text-transform:none}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--brand)}
+.kicker{display:inline-block;background:var(--brand-soft);color:#8F3B01;border:1px solid #FFE0C2;
+  border-radius:var(--r-pill);padding:5px 12px;font-size:12.5px;font-weight:600;margin:0 0 14px}
+h1{font-size:clamp(28px,4.2vw,40px);line-height:1.15;margin:0 0 12px;font-weight:800}
+.lede{font-size:17px;color:var(--ink-2);max-width:74ch;margin:0 0 18px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.meta span{background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:5px 12px}
+.note{margin:22px 0 0;border:1px solid #FFE0C2;background:var(--brand-soft);border-radius:var(--r-md);padding:14px 16px;font-size:14px;color:#5A2B02}
+.note strong{color:#8F3B01}
+/* ---------- body ---------- */
+main{padding:32px 0 64px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:24px 26px;box-shadow:var(--sh-sm);margin:0 0 18px}
+.toc{background:var(--brand-soft);border-color:#FFE0C2}
+.toc h2{margin-top:0;font-size:16px}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px}
+.toc li{margin:3px 0;font-size:14.5px}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+section h2{font-size:21px;margin:0 0 10px;font-weight:700}
+section h3{font-size:17px;margin:22px 0 8px;font-weight:700}
+section p{margin:0 0 12px}
+section ul,section ol{margin:0 0 14px;padding-left:22px}
+section li{margin:6px 0}
+.table-wrap{overflow-x:auto;margin:0 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:460px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#FAFAFB;font-weight:600}
+.callout{border-left:4px solid var(--brand);background:#FFFAF5;border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;margin:0 0 14px;font-size:14.5px}
+.callout.warn{border-left-color:var(--red);background:#FEF4F4}
+.callout.ok{border-left-color:var(--green);background:#F2FBF6}
+.callout strong{display:inline}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:var(--r-pill);padding:2px 10px;background:var(--brand-soft);color:#8F3B01;border:1px solid #FFE0C2}
+.tag.no{background:#FEF4F4;color:#9B1C1C;border-color:#FBD5D5}
+.tag.yes{background:#F2FBF6;color:#0B6B36;border-color:#C7EBD6}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0 0 14px}
+.contact-grid div{background:#FAFAFB;border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-size:14.5px}
+.contact-grid b{display:block;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.backtop{font-size:14px;margin:0}
+/* ---------- footer ---------- */
+footer.site{background:var(--ink);color:#C9CDD6;padding:44px 0 26px;margin-top:8px;font-size:14px}
+footer.site a{color:#E7E9EE;text-decoration:none}
+footer.site a:hover{color:var(--brand-2);text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+footer.site h3{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 12px}
+footer.site ul{list-style:none;margin:0;padding:0}
+footer.site li{margin:0 0 8px}
+.fbrand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.fbrand .mark{background:var(--brand)}
+.fbrand span{color:#fff;font-weight:800;font-size:17px;font-family:"Plus Jakarta Sans",sans-serif}
+.fbot{border-top:1px solid #262B36;margin-top:30px;padding-top:16px;font-size:12.5px;color:#8E949F;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fbot p{margin:0 0 6px}
+@media (max-width:900px){.fgrid{grid-template-columns:1fr 1fr}.toc ol{columns:1}}
+@media (max-width:560px){.fgrid{grid-template-columns:1fr}.wrap{padding:0 16px}.card{padding:18px 16px}.brand-tag{display:none}}
+@media print{.top,.toc,.backtop,footer.site{display:none}.card{box-shadow:none;border-color:#ccc}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">W</span>
+      <span class="brand-name">WearBenin</span>
+      <span class="brand-tag">Legal &amp; trust</span>
+    </a>
+    <div class="top-actions">
+      <a class="btn btn-ghost" href="/">&larr; Back to WearBenin</a>
+      <a class="btn btn-primary" href="mailto:support@wearbenin.ng">Contact support</a>
+    </div>
+  </div>
+</header>
+<div class="hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> &rsaquo; <a href="accessibility.html">Legal</a> &rsaquo; Accessibility</p>
+    <p class="kicker">Legal &amp; trust centre</p>
+    <h1>Accessibility Statement</h1>
+    <p class="lede">WearBenin should be usable by everyone in Benin City who wants to buy or sell clothing, including people using screen readers, keyboard navigation, low vision, colour blindness, dyslexia, a tremor or an older Android phone on a slow connection.</p>
+    <p class="meta"><span>Version 1.0 &middot; Effective 19 September 2026</span><span>Applies to wearbenin.ng and the WearBenin app</span><span>Contact: support@wearbenin.ng</span></p>
+    <p class="note"><strong>Information, not legal advice.</strong> WearBenin is a marketplace team, not a law firm. These pages describe how the platform actually works, written to align with Nigerian law (including the Nigeria Data Protection Act 2023 and the Federal Competition and Consumer Protection Act 2018), and they still need review by a Nigerian lawyer before launch. Unclear? Email <a href="mailto:support@wearbenin.ng">support@wearbenin.ng</a> or WhatsApp +234 913 688 7631.</p>
+  </div>
+</div>
+<main id="main">
+  <div class="wrap">
+      <nav class="card toc" aria-labelledby="toc-h">
+        <h2 id="toc-h">On this page</h2>
+        <ol>
+        <li><a href="#target">Our target and where we stand</a></li>
+
+        <li><a href="#done">What we have implemented</a></li>
+
+        <li><a href="#gaps">Known gaps</a></li>
+
+        <li><a href="#help">How to get help</a></li>
+
+        <li><a href="#review">Reporting, review and escalation</a></li>
+
+        </ol>
+      </nav>
+      <section class="card" id="target">
+        <h2>1. Our target and where we stand</h2>
+<p>Our target is <strong>WCAG 2.1 Level AA</strong>, the international accessibility standard published by the W3C, for the marketplace and for these legal pages. Level AA is the level most consumer guidance points to, and a Nigerian consumer would reasonably expect a service marketed to the general public in Benin City to clear it.</p>
+<p>Our honest status is <strong>partially conformant</strong>: parts of the site meet Level AA today and parts do not. We are not certified, we have not commissioned an independent audit, and we hold no accessibility accreditation. Accessibility was considered during the build rather than bolted on afterwards, and the known gaps are listed below rather than hidden.</p>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="done">
+        <h2>2. What we have implemented</h2>
+<ul>
+<li><strong>Semantic structure</strong> - real headings in a logical order, landmark elements, distinct page titles, and a skip-to-content link so keyboard users bypass the navigation in one keystroke.</li>
+<li><strong>Keyboard operation</strong> - navigation, listing cards, filters, forms and photo upload all work without a mouse, with a visible focus outline that is never removed.</li>
+<li><strong>Tap targets</strong> of at least 44 by 44 pixels, including favourite hearts, the share row and the mobile bottom navigation.</li>
+<li><strong>Text alternatives</strong> - vendor photos take an alt description, our interface icons carry text labels, and decorative graphics are hidden from screen readers.</li>
+<li><strong>Colour and contrast</strong> - body text and headings meet at least a 4.5:1 ratio on our canvas, and no state is conveyed by colour alone: verified, sold and condition states are written as words too.</li>
+<li><strong>Resizing</strong> - text scales to 200 per cent without breaking the layout, and pages reflow to a 320-pixel viewport without sideways scrolling.</li>
+<li><strong>Motion</strong> - we respect the operating system's <em>reduce motion</em> setting, and the homepage carousel pauses on hover and on keyboard focus.</li>
+<li><strong>Forms</strong> - every input has a visible associated label and errors are described in text next to the field, not only in red.</li>
+<li><strong>Weight</strong> - no advertising scripts or tracker bundles, which matters most on a throttled mobile connection.</li>
+</ul>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="gaps">
+        <h2>3. Known gaps</h2>
+<ol>
+<li><strong>Alt text depends on vendors.</strong> We prompt for a description on upload but cannot force a good one, so some listings carry a generic description such as <em>product photo</em>, which is useless to a screen-reader user.</li>
+<li><strong>The Instagram story card export is an image</strong> containing text, so it is not readable by a screen reader. The listing page has the same information in text, and copy-link and WhatsApp sharing are available instead.</li>
+<li><strong>Carousel control</strong> - the homepage carousel pauses on hover and on focus and obeys reduced-motion settings, but there is no permanent visible pause button yet.</li>
+<li><strong>Mobile filter sheet focus</strong> - on phones, keyboard focus does not always return to the button that opened the filter panel, and focus trapping is imperfect on some older Android browsers.</li>
+<li><strong>Contrast in a few small places</strong> - some small text set in brand orange on the light canvas falls below 4.5:1. We are working through the specific components; the darker link colour already meets the ratio.</li>
+<li><strong>No full screen-reader pass.</strong> We have checked structure, heading order, labels and keyboard access and run automated contrast and markup checks, but we have not completed a page-by-page pass with NVDA, JAWS, VoiceOver and TalkBack, or tested with a Braille display or speech-recognition software. Until that is done we will not claim conformance.</li>
+<li><strong>English only</strong> - no Nigerian Pidgin or Edo-language interface, though Pidgin is something we would like to offer.</li>
+<li><strong>Third-party surfaces are outside our control</strong> - WhatsApp, Instagram and TikTok have their own accessibility. If WhatsApp is inaccessible to you, every listing shows the vendor's phone number as text that can be dialled from any handset.</li>
+<li><strong>Older listings lack structure</strong> - listings imported from earlier versions of the site may have descriptions with no headings or lists, which are harder to skim with a screen reader.</li>
+</ol>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="help">
+        <h2>4. How to get help</h2>
+<p>Email <a href='mailto:support@wearbenin.ng?subject=Accessibility'>support@wearbenin.ng</a> with the subject <strong>Accessibility</strong>, or WhatsApp +234 913 688 7631, telling us the page or feature that is giving trouble with its link, your device and operating system (for example Android 12 on a Tecno Spark), the browser and any assistive technology in use (for example Chrome with TalkBack), and what you expected against what happened. We aim to reply within three business days and to fix blocking issues - anything that stops you browsing, posting or contacting a vendor - ahead of cosmetic ones. If a fix will take longer than 30 days we will say so and offer a workaround in the meantime.</p>
+<p><strong>If you cannot use the app at all</strong>, the marketplace still works by phone: every listing shows the vendor's phone number and WhatsApp link as plain text, so you can call and describe what you are looking for. You can also message the WearBenin support line and a member of the team will help you find listings or answer a question about a vendor. Our team is small, so it may take a day, but nobody will be told to come back when the website is fixed.</p>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="review">
+        <h2>5. Reporting, review and escalation</h2>
+<p>Accessibility complaints can be escalated like any other. For a matter about goods or a service, the Federal Competition and Consumer Protection Commission accepts consumer complaints, and its guidance on unfair practices supports the view that a service offered to the Nigerian public should not put up avoidable barriers. For a matter about your personal data and how it is stored or displayed, the <a href='privacy.html'>Privacy Policy</a> explains your rights under the Nigeria Data Protection Act 2023 and the route to the Nigeria Data Protection Commission.</p>
+<p>We review this statement at least once a year and whenever the interface changes in a way that affects access, and we update the version and effective date at the top of this page when we do. When we close a gap in section 3 we will say so here rather than quietly deleting the item from the list. Related pages: <a href='community-safety.html'>Community Safety Centre</a>, <a href='cookies.html'>Cookie &amp; Storage Notice</a>, <a href='data-deletion.html'>Data Deletion &amp; Account Closure</a>.</p>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+  </div>
+</main>
+  <footer class="site">
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <div class="fbrand"><span class="mark" aria-hidden="true">W</span><span>WearBenin</span></div>
+          <p>A clothing-only classifieds marketplace for Benin City. Buyers contact vendors directly by WhatsApp or phone. WearBenin processes no payments and holds no money for anyone.</p>
+          <ul>
+            <li>Email: <a href="mailto:support@wearbenin.ng">support@wearbenin.ng</a></li>
+            <li>WhatsApp: <a href="https://wa.me/2349136887631" rel="noopener" target="_blank">+234 913 688 7631</a></li>
+            <li>Benin City, Edo State, Nigeria</li>
+            <li><a href="/">WearBenin.com &mdash; back to the marketplace</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal &mdash; core</h3>
+          <ul>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
+          <li><a href="vendor-agreement.html">Vendors</a></li>
+          <li><a href="prohibited-items.html">Prohibited items</a></li>
+          <li><a href="refunds-disputes.html">Refunds</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal &mdash; service</h3>
+          <ul>
+          <li><a href="payments-delivery.html">Payments</a></li>
+          <li><a href="ip-takedown.html">IP</a></li>
+          <li><a href="community-safety.html">Safety</a></li>
+          <li><a href="fees.html">Fees</a></li>
+          <li><a href="data-deletion.html">Data deletion</a></li>
+          <li><a href="accessibility.html" aria-current="page">Accessibility</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Safety &amp; help</h3>
+          <ul>
+            <li><a href="community-safety.html">Safety centre</a></li>
+            <li><a href="mailto:support@wearbenin.ng?subject=Report%20abuse%20on%20WearBenin">Report a listing or a user</a></li>
+            <li><a href="mailto:support@wearbenin.ng?subject=Data%20deletion%20request">Data deletion request</a></li>
+            <li><a href="refunds-disputes.html">A deal went wrong</a></li>
+            <li><a href="fees.html">What WearBenin charges</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fbot">
+        <p>&copy; 2026 WearBenin. Made in Benin City, Edo State, Nigeria.</p>
+        <p>Legal pack version 1.0 &middot; Effective 19 September 2026. General information, not legal advice.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

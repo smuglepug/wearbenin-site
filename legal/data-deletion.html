@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Deletion &amp; Account Closure &middot; WearBenin</title>
+<meta name="description" content="How to request deletion of your WearBenin data or close your account: what we delete, what Nigerian law requires us to keep, and our 30-day promise.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="WearBenin">
+<meta property="og:title" content="Data Deletion &amp; Account Closure &middot; WearBenin">
+<meta property="og:description" content="How to request deletion of your WearBenin data or close your account: what we delete, what Nigerian law requires us to keep, and our 30-day promise.">
+<meta name="theme-color" content="#E85D04">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#111318;--ink-2:#2A2F3A;--muted:#6B7280;--line:#E5E7EB;--line-2:#F0F1F4;
+  --canvas:#F5F6F8;--surface:#FFF;--brand:#E85D04;--brand-2:#F48C06;--brand-soft:#FFF4E8;
+  --green:#12A150;--amber:#F59E0B;--red:#DC2626;--star:#F59E0B;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+  --sh-sm:0 1px 2px rgba(17,19,24,.06);--sh-md:0 4px 16px rgba(17,19,24,.08);--sh-lg:0 12px 32px rgba(17,19,24,.12);
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.brand-name{font-family:"Plus Jakarta Sans",Inter,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.01em}
+a{color:#B04502}
+a:hover{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--ink);padding:10px 14px;z-index:99;border-radius:0 0 var(--r-sm) 0}
+.skip:focus{left:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:16px;justify-content:space-between;min-height:68px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px;font-family:"Plus Jakarta Sans",sans-serif}
+.brand-name{font-weight:800;font-size:18px}
+.brand-tag{font-size:12.5px;color:var(--muted);border-left:1px solid var(--line);padding-left:10px;margin-left:2px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--r-pill);font-size:14px;
+  font-weight:600;text-decoration:none;border:1px solid transparent;min-height:44px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:#C94F03;color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:#d7dae0;color:var(--ink)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(180deg,#fff 0%,#fff 60%,var(--canvas) 100%);border-bottom:1px solid var(--line-2);padding:40px 0 32px}
+.crumbs{font-size:12.5px;color:var(--muted);margin:0 0 14px;text-transform:none}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--brand)}
+.kicker{display:inline-block;background:var(--brand-soft);color:#8F3B01;border:1px solid #FFE0C2;
+  border-radius:var(--r-pill);padding:5px 12px;font-size:12.5px;font-weight:600;margin:0 0 14px}
+h1{font-size:clamp(28px,4.2vw,40px);line-height:1.15;margin:0 0 12px;font-weight:800}
+.lede{font-size:17px;color:var(--ink-2);max-width:74ch;margin:0 0 18px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.meta span{background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:5px 12px}
+.note{margin:22px 0 0;border:1px solid #FFE0C2;background:var(--brand-soft);border-radius:var(--r-md);padding:14px 16px;font-size:14px;color:#5A2B02}
+.note strong{color:#8F3B01}
+/* ---------- body ---------- */
+main{padding:32px 0 64px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:24px 26px;box-shadow:var(--sh-sm);margin:0 0 18px}
+.toc{background:var(--brand-soft);border-color:#FFE0C2}
+.toc h2{margin-top:0;font-size:16px}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px}
+.toc li{margin:3px 0;font-size:14.5px}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+section h2{font-size:21px;margin:0 0 10px;font-weight:700}
+section h3{font-size:17px;margin:22px 0 8px;font-weight:700}
+section p{margin:0 0 12px}
+section ul,section ol{margin:0 0 14px;padding-left:22px}
+section li{margin:6px 0}
+.table-wrap{overflow-x:auto;margin:0 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:460px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#FAFAFB;font-weight:600}
+.callout{border-left:4px solid var(--brand);background:#FFFAF5;border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;margin:0 0 14px;font-size:14.5px}
+.callout.warn{border-left-color:var(--red);background:#FEF4F4}
+.callout.ok{border-left-color:var(--green);background:#F2FBF6}
+.callout strong{display:inline}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:var(--r-pill);padding:2px 10px;background:var(--brand-soft);color:#8F3B01;border:1px solid #FFE0C2}
+.tag.no{background:#FEF4F4;color:#9B1C1C;border-color:#FBD5D5}
+.tag.yes{background:#F2FBF6;color:#0B6B36;border-color:#C7EBD6}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0 0 14px}
+.contact-grid div{background:#FAFAFB;border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-size:14.5px}
+.contact-grid b{display:block;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.backtop{font-size:14px;margin:0}
+/* ---------- footer ---------- */
+footer.site{background:var(--ink);color:#C9CDD6;padding:44px 0 26px;margin-top:8px;font-size:14px}
+footer.site a{color:#E7E9EE;text-decoration:none}
+footer.site a:hover{color:var(--brand-2);text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+footer.site h3{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 12px}
+footer.site ul{list-style:none;margin:0;padding:0}
+footer.site li{margin:0 0 8px}
+.fbrand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.fbrand .mark{background:var(--brand)}
+.fbrand span{color:#fff;font-weight:800;font-size:17px;font-family:"Plus Jakarta Sans",sans-serif}
+.fbot{border-top:1px solid #262B36;margin-top:30px;padding-top:16px;font-size:12.5px;color:#8E949F;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fbot p{margin:0 0 6px}
+@media (max-width:900px){.fgrid{grid-template-columns:1fr 1fr}.toc ol{columns:1}}
+@media (max-width:560px){.fgrid{grid-template-columns:1fr}.wrap{padding:0 16px}.card{padding:18px 16px}.brand-tag{display:none}}
+@media print{.top,.toc,.backtop,footer.site{display:none}.card{box-shadow:none;border-color:#ccc}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">W</span>
+      <span class="brand-name">WearBenin</span>
+      <span class="brand-tag">Legal &amp; trust</span>
+    </a>
+    <div class="top-actions">
+      <a class="btn btn-ghost" href="/">&larr; Back to WearBenin</a>
+      <a class="btn btn-primary" href="mailto:support@wearbenin.ng">Contact support</a>
+    </div>
+  </div>
+</header>
+<div class="hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> &rsaquo; <a href="data-deletion.html">Legal</a> &rsaquo; Data Deletion</p>
+    <p class="kicker">Legal &amp; trust centre</p>
+    <h1>Data Deletion &amp; Account Closure</h1>
+    <p class="lede">You can leave WearBenin and have your data deleted, without explaining yourself and without paying anything. This page is the procedure: what you can delete, how to ask, how we confirm it is really you, the 30 days we commit to, and what survives deletion and why.</p>
+    <p class="meta"><span>Version 1.0 &middot; Effective 19 September 2026</span><span>Applies to wearbenin.ng and the WearBenin app</span><span>Contact: support@wearbenin.ng</span></p>
+    <p class="note"><strong>Information, not legal advice.</strong> WearBenin is a marketplace team, not a law firm. These pages describe how the platform actually works, written to align with Nigerian law (including the Nigeria Data Protection Act 2023 and the Federal Competition and Consumer Protection Act 2018), and they still need review by a Nigerian lawyer before launch. Unclear? Email <a href="mailto:support@wearbenin.ng">support@wearbenin.ng</a> or WhatsApp +234 913 688 7631.</p>
+  </div>
+</div>
+<main id="main">
+  <div class="wrap">
+      <nav class="card toc" aria-labelledby="toc-h">
+        <h2 id="toc-h">On this page</h2>
+        <ol>
+        <li><a href="#options">Your four options</a></li>
+
+        <li><a href="#how">How to ask</a></li>
+
+        <li><a href="#sla">Our 30-day commitment</a></li>
+
+        <li><a href="#survives">What survives deletion, and why</a></li>
+
+        <li><a href="#complaints">If you are not satisfied</a></li>
+
+        </ol>
+      </nav>
+      <section class="card" id="options">
+        <h2>1. Your four options</h2>
+<ul>
+<li><strong>Delete specific items</strong> - a listing, its photographs, a favourite, a saved search or one message thread. Fastest, and you keep your account, your shop and your saved listings.</li>
+<li><strong>Correct instead of delete</strong> - if the problem is that something is wrong rather than that it exists, edit it yourself in your account settings. Most fixes take under a minute.</li>
+<li><strong>Close your account</strong> - your listings come down and your shop page stops showing, and your account data is deleted on the schedule below. Reviews you left may stay in anonymised form so that one person leaving does not rewrite a vendor's rating.</li>
+<li><strong>Delete everything, including identity data</strong> - the full erasure: account, shop, listings, images, favourites, saved searches, messages and profile details removed from our live systems, subject only to the legal exceptions in section 5.</li>
+</ul>
+<p>If you want your listings gone but want to keep your login for buying, say so; we will take down the shop and leave the account standing. Say what you want in your own words rather than picking from a menu we invented.</p>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="how">
+        <h2>2. How to ask</h2>
+<p><strong>In the app, fastest.</strong> Sign in, open account settings, choose <em>Delete account</em> and confirm. You type a confirmation phrase so a stray tap cannot wipe your shop, you get an immediate email acknowledgement, and you get a completion email when it is done.</p>
+<p><strong>By email, if the button is unavailable or you cannot sign in.</strong> Send from the address registered to your account to <a href='mailto:support@wearbenin.ng?subject=Data%20deletion%20request'>support@wearbenin.ng</a> with the subject <strong>Data deletion request</strong>, including your full name as on the account; the registered email and any phone number used on listings; your shop name if you have one; what you want deleted - everything, the account only, one listing, one photograph, one thread; whether you want your reviews left anonymously or removed; and how you would like completion confirmed.</p>
+<p><strong>By WhatsApp.</strong> If email is difficult - poor connection, no access to the registered inbox - message +234 913 688 7631 and say you want a data deletion request. We open the same ticket, but deletion is completed only after we confirm it is really you, because a stranger being able to delete your shop is exactly the abuse we spend the rest of the site preventing.</p>
+<p><strong>Verification.</strong> A request from your registered email is usually enough. Otherwise we may send a one-time code to the phone on the account, or ask for details only the account holder would know. We never ask for your password, card details, BVN, NIN or a bank one-time code to process a deletion. Requests to delete somebody else's account are refused unless the requester has legal authority, such as a parent or guardian for a minor's account or an executor with a court order, and we will tell you what document is needed.</p>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="sla">
+        <h2>3. Our 30-day commitment</h2>
+<div class='table-wrap'><table>
+<tr><th>Milestone</th><th>What happens</th><th>Time</th></tr>
+<tr><td>Ticket opened</td><td>We confirm receipt and give you a reference</td><td>Within 3 business days</td></tr>
+<tr><td>Identity confirmed</td><td>We ask for anything else once, and no more</td><td>Immediately after your reply</td></tr>
+<tr><td>Live systems erased</td><td>Account, shop, listings, images, favourites, saved searches, messages and profile data removed from the production database and file storage</td><td>Within 30 calendar days of a verified request</td></tr>
+<tr><td>Archive and backups</td><td>Rotated out on the normal backup cycle</td><td>Within a further 90 days</td></tr>
+<tr><td>Confirmation</td><td>We email you saying what was deleted and what was retained</td><td>On completion</td></tr>
+</table></div>
+<p>Thirty days is our service standard, in line with the response expectation under the Nigeria Data Protection Act 2023 and the practice described in our <a href='privacy.html'>Privacy Policy</a>. If we cannot meet it - for example because a legal hold applies - we tell you inside the 30 days, with the reason and a new date. We do not slow-roll requests from users who have complained about us, and we do not ask you to stay.</p>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="survives">
+        <h2>4. What survives deletion, and why</h2>
+<ul>
+<li><strong>Tax and accounting records</strong> - only if we ever charged you a fee. Nigerian record-keeping rules require accounting records for six years. Today, with no fees and no payments, this is usually empty.</li>
+<li><strong>Safety and abuse records</strong> - reports, suspensions and takedowns involving your account are kept up to 24 months in restricted form, because scam accounts re-register and history is how we recognise them.</li>
+<li><strong>Fraud and crime evidence</strong> - where a matter is with the police, the EFCC, NAFDAC or a court, those specific records are kept until it ends, and we may be required to hand them over. We will tell you if a hold affects your request.</li>
+<li><strong>Anonymised reviews and aggregate statistics</strong> - a review you leave may remain without your name if you ask; counts and averages that identify nobody.</li>
+</ul>
+<div class='callout warn'><strong>What deletion cannot reach.</strong> We cannot delete a WhatsApp conversation you had with a vendor, the vendor's copy of your number, a photo you sent them or a screenshot they kept - that data is not on our platform. Ask the other person directly, and if they refuse, use the route in <a href='refunds-disputes.html'>Refunds &amp; Disputes</a> or complain to the NDPC. Search-engine caches refresh on their own schedule; the page itself will be gone, and search engines have their own removal forms if you need it sooner.</div>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+      <section class="card" id="complaints">
+        <h2>5. If you are not satisfied</h2>
+<p>If a verified deletion has not been completed within 30 days, or we are holding something you believe we should not, reply on the same ticket and it is escalated to the person who runs the platform, not to a queue. If our answer still does not satisfy you, you may complain to the Nigeria Data Protection Commission, which supervises the NDPA, and you may seek redress in court; the <a href='privacy.html'>Privacy Policy</a> sets out your full rights and the Commission's role.</p>
+<p>Tell us what went wrong specifically - which data, which page, which email - and we will investigate that rather than a general complaint. Related pages: <a href='cookies.html'>Cookie &amp; Storage Notice</a> for clearing data on your own device, <a href='fees.html'>Fees &amp; Commission</a>, and <a href='terms.html'>Terms of Service</a>. Contact: <a href='mailto:support@wearbenin.ng'>support@wearbenin.ng</a> or WhatsApp +234 913 688 7631, Benin City, Edo State, Nigeria.</p>
+        <p class="backtop"><a href="#main">Back to top</a></p>
+      </section>
+  </div>
+</main>
+  <footer class="site">
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <div class="fbrand"><span class="mark" aria-hidden="true">W</span><span>WearBenin</span></div>
+          <p>A clothing-only classifieds marketplace for Benin City. Buyers contact vendors directly by WhatsApp or phone. WearBenin processes no payments and holds no money for anyone.</p>
+          <ul>
+            <li>Email: <a href="mailto:support@wearbenin.ng">support@wearbenin.ng</a></li>
+            <li>WhatsApp: <a href="https://wa.me/2349136887631" rel="noopener" target="_blank">+234 913 688 7631</a></li>
+            <li>Benin City, Edo State, Nigeria</li>
+            <li><a href="/">WearBenin.com &mdash; back to the marketplace</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal &mdash; core</h3>
+          <ul>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
+          <li><a href="vendor-agreement.html">Vendors</a></li>
+          <li><a href="prohibited-items.html">Prohibited items</a></li>
+          <li><a href="refunds-disputes.html">Refunds</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal &mdash; service</h3>
+          <ul>
+          <li><a href="payments-delivery.html">Payments</a></li>
+          <li><a href="ip-takedown.html">IP</a></li>
+          <li><a href="community-safety.html">Safety</a></li>
+          <li><a href="fees.html">Fees</a></li>
+          <li><a href="data-deletion.html" aria-current="page">Data deletion</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Safety &amp; help</h3>
+          <ul>
+            <li><a href="community-safety.html">Safety centre</a></li>
+            <li><a href="mailto:support@wearbenin.ng?subject=Report%20abuse%20on%20WearBenin">Report a listing or a user</a></li>
+            <li><a href="mailto:support@wearbenin.ng?subject=Data%20deletion%20request">Data deletion request</a></li>
+            <li><a href="refunds-disputes.html">A deal went wrong</a></li>
+            <li><a href="fees.html">What WearBenin charges</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fbot">
+        <p>&copy; 2026 WearBenin. Made in Benin City, Edo State, Nigeria.</p>
+        <p>Legal pack version 1.0 &middot; Effective 19 September 2026. General information, not legal advice.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
