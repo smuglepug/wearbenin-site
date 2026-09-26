@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://wearbenin-clothing-marketplace.netlify.app/sitemap.xml
+Sitemap: https://smuglepug.github.io/wearbenin-site/sitemap.xml

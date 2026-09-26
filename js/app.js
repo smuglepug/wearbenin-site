@@ -37,7 +37,7 @@ import {
 
 
 /* ------------------------------------------------------------------ SEO meta */
-const SEO_BASE = 'https://wearbenin-clothing-marketplace.netlify.app/';
+const SEO_BASE = 'https://smuglepug.github.io/wearbenin-site/';
 const ROUTE_META = {
   '/': "Shop Benin City's fashion at market prices. Ankara, agbada, iro & buba, sneakers and bags from verified vendors across Edo State. Chat on WhatsApp before you pay.",
   '/categories': "Browse every clothing category on WearBenin - ankara, agbada, sneakers, bags and more - with prices from Benin City vendors.",
