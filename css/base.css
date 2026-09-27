@@ -441,7 +441,7 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .cd-buy:hover{text-decoration:underline}
 .cd-remove{font-size:12px;color:#9A3412;font-weight:600}
 .cd-remove:hover{color:#C2410C}
-.cd-foot{border-top:1px solid var(--line);padding:14px 16px calc(14px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px}
+.cd-foot{border-top:1px solid var(--line);padding:14px 16px calc(14px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px;max-height:42vh;overflow-y:auto;overscroll-behavior:contain}
 .cd-sum{display:flex;align-items:center;justify-content:space-between;font-size:15px}
 .cd-sum b{font-size:18px;color:var(--brand)}
 .cd-note{font-size:12px;color:var(--muted);margin:0}
