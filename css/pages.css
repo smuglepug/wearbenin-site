@@ -294,7 +294,7 @@ table.data tr:hover td{background:#FAFBFC}
 .auth-form .field{margin-bottom:18px}
 .auth-divider{display:flex;align-items:center;gap:14px;margin:26px 0;color:var(--muted);font-size:12.5px;font-weight:600}
 .auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--line)}
-.oauth-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.oauth-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:12px}
 .oauth-btn{
   min-height:48px;border:1.5px solid var(--line);border-radius:var(--r-md);display:flex;align-items:center;
   justify-content:center;gap:9px;font-size:13.5px;font-weight:700;transition:all var(--dur) var(--ease);background:#fff
