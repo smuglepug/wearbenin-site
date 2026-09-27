@@ -445,8 +445,12 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .cd-sum{display:flex;align-items:center;justify-content:space-between;font-size:15px}
 .cd-sum b{font-size:18px;color:var(--brand)}
 .cd-note{font-size:12px;color:var(--muted);margin:0}
-.cd-clear{font-size:12.5px;color:#9A3412;font-weight:600;text-align:center;padding:6px}
+.cd-clear{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px;color:#9A3412;font-weight:600;padding:8px}
 .cd-clear:hover{color:#C2410C}
+/* Any icon in the drawer footer must be sized explicitly - without this the
+   inline SVG falls back to its intrinsic size and balloons over the panel. */
+.cd-foot svg{width:16px;height:16px;flex:none}
+.cd-buy svg{width:14px;height:14px;flex:none}
 
 /* ---------- Sheet (filter bottom sheet) ---------- */
 .sheet-root{position:fixed;inset:0;z-index:var(--z-sheet);display:none}

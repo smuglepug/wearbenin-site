@@ -130,6 +130,20 @@ function groupPhone(items) {
   return phones.length === 1 ? phones[0] : null;
 }
 
+/* One order per vendor — the drawer needs a checkout button for each. */
+function groupByVendor(items) {
+  const map = new Map();
+  items.forEach(i => {
+    const phone = String(i.phone || '').replace(/\D/g, '');
+    const key = phone || 'no-phone';
+    if (!map.has(key)) map.set(key, { phone, vendor: i.vendor || '', items: [], total: 0 });
+    const g = map.get(key);
+    g.items.push(i);
+    g.total += (Number(i.price) || 0) * (Number(i.qty) || 1);
+  });
+  return [...map.values()];
+}
+
 export function renderCartDrawer() {
   const root = document.getElementById('wb-cartdrawer');
   if (!root) return;
@@ -146,11 +160,24 @@ export function renderCartDrawer() {
   }
   body.innerHTML = items.map(cdRow).join('');
   const total = cartTotal();
-  const onePhone = groupPhone(items);
-  const wa = onePhone ? `https://wa.me/234${onePhone.replace(/^0?234/, '').replace(/^0/, '')}?text=${encodeURIComponent('Hello! I\'d like to buy from WearBenin:\n' + items.map(i => `\u2022 ${i.qty} x ${i.title} — ${money(i.price)}`).join('\n'))}` : '';
+  /* Group by vendor: each vendor is its own order, so every vendor gets its own
+     checkout button. Previously a multi-vendor cart showed NO checkout at all
+     and told the buyer to hunt for per-item Buy buttons. */
+  const groups = groupByVendor(items);
+  const multi = groups.length > 1;
+  const checkout = groups.map(g => {
+    const digits = String(g.phone || '').replace(/^0?234/, '').replace(/^0/, '');
+    const msg = "Hello! I'd like to buy from WearBenin:\n" +
+      g.items.map(i => `\u2022 ${i.qty} x ${i.title} \u2014 ${money((Number(i.price) || 0) * (Number(i.qty) || 1))}`).join('\n') +
+      `\nTotal: ${money(g.total)} (pay on delivery)`;
+    if (!digits) {
+      return `<a class="btn btn-primary btn-lg btn-block" href="#/cart" data-close-cart-nav>${icon('cart')} Checkout \u00b7 ${esc(g.vendor || 'Vendor')}</a>`;
+    }
+    return `<a class="btn btn-wa btn-lg btn-block" href="https://wa.me/234${digits}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener noreferrer">${icon('whatsapp')} Checkout via WhatsApp${multi ? ` \u00b7 ${esc(g.vendor || 'Vendor')}` : ''}</a>`;
+  }).join('');
   foot.innerHTML = `<div class="cd-sum"><span>Subtotal</span><b>${money(total)}</b></div>
-    <p class="cd-note">${onePhone ? 'Pay this vendor on delivery.' : 'Items from more than one vendor — use each item\'s Buy button to message and pay on delivery.'}</p>
-    ${onePhone ? `<a class="btn btn-wa btn-lg btn-block" href="${wa}" target="_blank" rel="noopener noreferrer">${icon('whatsapp')} Checkout on WhatsApp</a>` : ''}
+    <p class="cd-note">${multi ? 'Each vendor is a separate order \u2014 checkout opens WhatsApp with your items written up. You pay on delivery.' : 'Checkout opens WhatsApp with your items written up. You pay on delivery.'}</p>
+    ${checkout}
     <a class="btn btn-ghost btn-block" href="#/cart" data-close-cart-nav>View full cart</a>
     <button class="cd-clear" data-clear-cart>${icon('trash')} Clear cart</button>`;
   wireDrawerBody(body, foot);
