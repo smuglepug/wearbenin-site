@@ -144,6 +144,38 @@ function groupByVendor(items) {
   return [...map.values()];
 }
 
+/* Carts saved before the vendor travelled with the item have no phone, which
+   silently removed the WhatsApp checkout. Backfill once from the listing
+   endpoint, then re-render. Guarded so it can never loop. */
+const hydrateTried = new Set();
+let hydrating = false;
+async function hydrateMissingPhones() {
+  if (hydrating) return;
+  const missing = items.filter(i => !i.phone && i.slug && !hydrateTried.has(i.slug));
+  if (!missing.length) return;
+  hydrating = true;
+  missing.forEach(i => hydrateTried.add(i.slug));
+  try {
+    const { default: api } = await import('./api.js');
+    let filled = false;
+    await Promise.all(missing.slice(0, 8).map(async it => {
+      try {
+        const res = await api.listing(it.slug);
+        const l = (res && (res.listing || res)) || {};
+        const v = l.vendor || {};
+        const phone = v.phone || v.whatsapp || '';
+        if (!phone) return;
+        const row = items.find(x => x.slug === it.slug);
+        if (!row) return;
+        row.phone = phone;
+        if (!row.vendor || row.vendor === 'Vendor') row.vendor = v.name || 'Vendor';
+        filled = true;
+      } catch (e) { /* leave it as-is */ }
+    }));
+    if (filled) { persist(); renderCartDrawer(); }
+  } finally { hydrating = false; }
+}
+
 export function renderCartDrawer() {
   const root = document.getElementById('wb-cartdrawer');
   if (!root) return;
@@ -159,6 +191,7 @@ export function renderCartDrawer() {
     return;
   }
   body.innerHTML = items.map(cdRow).join('');
+  hydrateMissingPhones();
   const total = cartTotal();
   /* Group by vendor: each vendor is its own order, so every vendor gets its own
      checkout button. Previously a multi-vendor cart showed NO checkout at all
@@ -239,10 +272,18 @@ export function wireCartCards() {
       title: (card && card.querySelector('.card-title') ? card.querySelector('.card-title').textContent : 'Item').trim(),
       price: Number(btn.dataset.price) || parsePrice(card && card.querySelector('.card-price')),
       images: img ? [img.currentSrc || img.src] : [],
-      area: card && card.querySelector('.card-meta span') ? card.querySelector('.card-meta span').textContent.trim() : 'Benin City'
+      area: card && card.querySelector('.card-meta span') ? card.querySelector('.card-meta span').textContent.trim() : 'Benin City',
+      vendor_phone: btn.dataset.vendorPhone || ''
+    };
+    /* The vendor has to travel with the item, otherwise the drawer has no phone
+       to message and the WhatsApp checkout simply never appears. */
+    const vendor = {
+      name: btn.dataset.vendorName || '',
+      slug: btn.dataset.vendorSlug || '',
+      phone: btn.dataset.vendorPhone || ''
     };
     if (cartHas(slug)) { removeFromCart(slug); import('./ui.js').then(m => m.toast('Removed from cart.')).catch(() => {}); }
-    else { addToCart(listing, {}); import('./ui.js').then(m => m.toast('Added to cart.', 'ok')).catch(() => {}); }
+    else { addToCart(listing, vendor); import('./ui.js').then(m => m.toast('Added to cart.', 'ok')).catch(() => {}); }
     btn.classList.toggle('on', !cartHas(slug));
   });
 }

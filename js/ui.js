@@ -144,6 +144,8 @@ export function listingCard(l, opts = {}) {
     <button class="card-fav ${isFav ? 'on' : ''}" data-fav="${esc(l.id)}" data-slug="${esc(l.slug || '')}"
             aria-label="${isFav ? 'Remove from saved' : 'Save this listing'}" aria-pressed="${isFav}">${icon('heart')}</button>
     <button class="card-cart ${cartHas(l.slug || l.id) ? 'on' : ''}" data-cart-add="${esc(l.slug || l.id)}" data-cart-id="${esc(l.id)}" data-price="${esc(l.price)}"
+            data-vendor-name="${esc((l.vendor && l.vendor.name) || '')}" data-vendor-slug="${esc((l.vendor && l.vendor.slug) || '')}"
+            data-vendor-phone="${esc((l.vendor && (l.vendor.phone || l.vendor.whatsapp)) || '')}"
             aria-label="${cartHas(l.slug || l.id) ? 'In cart' : 'Add to cart'}">${icon('cart')}</button>
     <div class="card-body">
       <div class="card-price">${money(l.price)}${l.negotiable ? '<span class="neg">Negotiable</span>' : ''}</div>
