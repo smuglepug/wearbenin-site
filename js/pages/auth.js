@@ -128,6 +128,9 @@ export function renderLogin(ctx) {
       <p class="text-small text-muted" style="margin-top:24px;text-align:center">
         New to WearBenin? <a href="#/register${next ? '?next=' + encodeURIComponent(next) : ''}" style="color:var(--brand);font-weight:700">Create an account</a>
       </p>
+      <p class="text-small text-muted" style="margin-top:10px;text-align:center">
+        <a href="#/forgot-password" style="color:var(--muted);font-weight:600;text-decoration:underline">Forgot your password?</a>
+      </p>
       ${d.vendor && !supabaseConfigured ? `<div class="demo-note">
         <b>Demo accounts (seeded):</b><br>
         Buyer — <code>${esc(d.buyer.email)}</code> / <code>${esc(d.buyer.password)}</code><br>

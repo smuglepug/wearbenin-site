@@ -29,6 +29,7 @@ import { renderAccount } from './pages/account.js';
 import { renderReferral } from './pages/referral.js';
 import { renderOnboarding } from './pages/onboarding.js';
 import { renderLogin, renderRegister } from './pages/auth.js';
+import { renderForgotPassword, renderResetPassword } from './pages/forgot.js';
 import { renderAdmin } from './pages/admin.js';
 import {
   renderAbout, renderHowItWorks, renderSafety, renderHelp, renderContact,
@@ -89,6 +90,8 @@ function registerRoutes() {
   route('/referral', renderReferral);
   route('/refer', renderReferral);
   route('/login', renderLogin);
+  route('/forgot-password', renderForgotPassword);
+  route('/reset-password', renderResetPassword);
   route('/register', renderRegister);
   route('/admin', renderAdmin);
   route('/about', renderAbout);
