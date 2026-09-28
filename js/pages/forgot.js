@@ -10,7 +10,7 @@
    ========================================================================== */
 
 import { supabase, supabaseConfigured } from '../supabase.js';
-import { toast, toastOk } from '../ui.js';
+import { toast } from '../ui.js';
 import { esc } from '../util.js';
 
 const SENT_KEY = 'wb:reset-sent';
@@ -177,7 +177,7 @@ export async function renderResetPassword() {
       const { error } = await supabase.auth.updateUser({ password: pass });
       if (error) throw error;
       try { localStorage.removeItem(SENT_KEY); } catch (e) { /* private mode */ }
-      toastOk('Password updated. You are signed in.');
+      toast('Password updated. You are signed in.', 'ok');
       window.location.hash = '#/dashboard';
     } catch (err) {
       inlineError((err && err.message) || 'That link has expired. Request a new one.');
