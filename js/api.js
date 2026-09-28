@@ -297,6 +297,7 @@ export const api = {
   referral() { return get('/me/referral', { auth: true }); },
   submitReferralProof(body) { return post('/me/referral/proof', body, { auth: true }); },
   referralProgram() { return get('/referral/program'); },
+  transparency() { return get('/transparency'); },
 
   /* ---- uploads ---- */
   upload(files) {

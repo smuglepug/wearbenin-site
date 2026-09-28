@@ -473,3 +473,20 @@ table.data tr:hover td{background:#FAFBFC}
 .ob-tick svg{width:26px;height:26px}
 .ob-done .ob-actions{justify-content:center}
 @media(min-width:760px){.ob-card h1{font-size:30px}}
+
+/* ---------- Transparency page (public trust numbers) ---------- */
+.tp-head{margin-bottom:18px}
+.tp-head h1{margin-bottom:6px}
+.tp-head .lede{margin:0;max-width:62ch}
+.tp-card{padding:18px;margin-bottom:16px}
+.tp-card h2{font-size:17px;margin:0 0 12px}
+.tp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:12px;margin-top:12px}
+.tp-stat{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-md);padding:14px}
+.tp-stat-v{font-size:24px;font-weight:800;color:var(--ink);line-height:1.1}
+.tp-stat-k{font-size:13px;font-weight:600;color:var(--ink-2);margin-top:4px}
+.tp-stat-s{font-size:12px;color:var(--muted);margin-top:2px}
+.tp-note{font-size:13px;margin:14px 0 0;padding:10px 12px;border-radius:var(--r-md);border:1px solid var(--line)}
+.tp-note.is-ok{background:#F0FDF4;border-color:#BBF7D0;color:#14532D}
+.tp-note.is-warn{background:#FFFBEB;border-color:#FDE68A;color:#78350F}
+.tp-list{margin:0;padding-left:20px;font-size:14px;color:var(--ink-2);line-height:1.75}
+.tp-list li{margin-bottom:6px}

@@ -165,7 +165,8 @@ function footer() {
     <div class="footer-col">
       <h4>Safety &amp; Trust</h4>
       <ul>
-        <li><a href="#/safety">Safety centre</a></li>
+        <li><a href="#/safety">Safety centre</a>
+          <a href="#/transparency">Transparency</a></li>
         <li><a href="#/legal/community-safety.html">Community guidelines</a></li>
         <li><a href="#/legal/prohibited-items.html">Prohibited items</a></li>
         <li><a href="#/legal/refunds-disputes.html">Refunds &amp; disputes</a></li>

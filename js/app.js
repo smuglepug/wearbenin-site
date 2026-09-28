@@ -35,6 +35,7 @@ import {
   renderAbout, renderHowItWorks, renderSafety, renderHelp, renderContact,
   renderLegal, renderNotFound
 } from './pages/static.js';
+import { renderTransparency } from './pages/transparency.js';
 
 
 /* ------------------------------------------------------------------ SEO meta */
@@ -97,6 +98,7 @@ function registerRoutes() {
   route('/about', renderAbout);
   route('/how-it-works', renderHowItWorks);
   route('/safety', renderSafety);
+  route('/transparency', renderTransparency);
   route('/help', renderHelp);
   route('/contact', renderContact);
   route('/legal/:file', renderLegal);
