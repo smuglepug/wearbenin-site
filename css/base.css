@@ -411,7 +411,7 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
   .site-main{padding-bottom:calc(var(--bottomnav-h) + 32px)}
   /* The footer is outside .site-main, so it needs the same reservation or its
      last 66px stay behind the nav. */
-  .site-footer{margin-bottom:0;padding-bottom:var(--bottomnav-h)}
+  .site-footer{margin-bottom:0;padding-bottom:calc(var(--bottomnav-h) + 8px)}
 }
 
 /* ---------- Cart drawer (slide-in basket) ---------- */
