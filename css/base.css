@@ -551,6 +551,12 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
   .crumbs a,
   .footer-links a,
   .legal-links a{ min-height:44px; }
+  /* These are inline text links, so min-height needs an inline-flex box to
+     apply at all — without it the rule is silently ignored and the target stays
+     the height of the text. */
+  .vendor-name a,
+  .community-note a{ display:inline-flex; align-items:center; min-height:44px; }
+  .promo-ct{ min-height:44px; }
   .footer-col ul{ gap:0; }
   .crumbs{ padding:12px 0; }
   .footer-bottom a{ display:inline-flex; align-items:center; min-height:44px; }
