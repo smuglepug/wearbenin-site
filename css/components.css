@@ -538,7 +538,7 @@
   background:var(--canvas);color:var(--brand);
 }
 .area-ico svg{width:15px;height:15px}
-.area-name{font-weight:600;font-size:var(--fs-body);color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.area-name{font-weight:600;font-size:var(--fs-body);color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .area-count{
   font-size:var(--fs-micro);font-weight:700;color:var(--muted);
   background:var(--canvas);border-radius:var(--r-pill);padding:4px 10px;white-space:nowrap;
@@ -675,7 +675,7 @@
 .ta-ico{color:var(--muted);display:flex}
 .ta-ico svg{width:16px;height:16px}
 .ta-text{display:flex;flex-direction:column;min-width:0}
-.ta-text b{font-weight:600;color:var(--ink);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ta-text b{font-weight:600;color:var(--ink);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .ta-text span{font-size:12px;color:var(--ink-2)}
 .ta-price{font-weight:700;color:var(--green);font-size:13px;white-space:nowrap}
 .ta-all{display:flex;align-items:center;gap:8px;width:100%;padding:11px 10px;border:0;

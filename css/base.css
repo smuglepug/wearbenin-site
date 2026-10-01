@@ -344,7 +344,7 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .footer-grid > div{min-width:0}
 .footer-col{min-width:0}
 .footer-cat{min-width:0}
-.footer-cat .footer-cat-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.footer-cat .footer-cat-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .footer-col a,.footer-legal a{overflow-wrap:anywhere}
 .footer-brand .brand-name{color:#fff}
 .footer-brand .brand-sub{color:rgba(255,255,255,.5)}
