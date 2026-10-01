@@ -327,6 +327,12 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .drawer-link .count{margin-left:auto;font-size:var(--fs-micro);color:var(--muted);font-weight:600}
 
 /* ---------- Footer (home section 15) ---------- */
+/* The bottom nav is position:fixed, so it floats over the end of the document.
+   .site-main reserves that space for its own content, but the footer sits
+   AFTER .site-main, so its last band was unreachable: the copyright line and
+   the Naira disclaimer sat permanently behind the nav. Reserve it in the same
+   media query that shows the nav — on desktop there is no nav, so padding
+   there would just be dead space. */
 .site-footer{background:var(--ink);color:rgba(255,255,255,.72);margin-top:var(--s9);font-size:var(--fs-small)}
 .footer-top{padding:var(--s8) 0 var(--s7)}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:var(--s7)}
@@ -403,7 +409,9 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 @media(max-width:900px){
   .bottom-nav{display:block}
   .site-main{padding-bottom:calc(var(--bottomnav-h) + 32px)}
-  .site-footer{margin-bottom:0}
+  /* The footer is outside .site-main, so it needs the same reservation or its
+     last 66px stay behind the nav. */
+  .site-footer{margin-bottom:0;padding-bottom:var(--bottomnav-h)}
 }
 
 /* ---------- Cart drawer (slide-in basket) ---------- */
