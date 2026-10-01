@@ -338,6 +338,10 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:var(--s7)}
 @media(max-width:1080px){.footer-grid{grid-template-columns:1fr 1fr 1fr;gap:var(--s6)}}
 @media(max-width:640px){.footer-grid{grid-template-columns:1fr 1fr;gap:var(--s6)}}
+/* Two footer columns at 320-380px give each column ~128px, which is narrower
+   than a category name plus its count chip, so the longest ones overflow the
+   page sideways. One column is the only thing that fits. */
+@media(max-width:380px){.footer-grid{grid-template-columns:1fr;gap:var(--s5)}}
 /* Footer columns must be able to shrink: grid items default to min-width:auto, so a long
    category name or an unbreakable count chip could push the page wider than 360px
    (measured: scrollWidth 375 at a 360px viewport, masked by body overflow-x:hidden). */
@@ -362,7 +366,10 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .footer-cat{display:flex;align-items:center;gap:10px;min-height:32px}
 .footer-cat .footer-count{
   margin-left:auto;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.62);
-  background:rgba(255,255,255,.10);border-radius:var(--r-pill);padding:1px 8px
+  background:rgba(255,255,255,.10);border-radius:var(--r-pill);padding:1px 8px;
+  /* flex:0 0 auto would keep the chip at full size even when the column is
+     too narrow, forcing the row wider than the viewport. */
+  flex:0 1 auto;min-width:0
 }
 .footer-cat:hover .footer-count{background:rgba(232,93,4,.28);color:#fff}
 .footer-bottom{
